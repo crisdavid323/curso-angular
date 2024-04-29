@@ -16,7 +16,7 @@ export class HeroPageComponent implements OnInit {
   constructor(
     private heroesService: HeroesService,
     private activatedRoute: ActivatedRoute,
-    private reuter: Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,13 +25,13 @@ export class HeroPageComponent implements OnInit {
         switchMap(({ id }: { id: string }) => this.heroesService.getHeroById(id)),
       )
       .subscribe((hero: Hero | undefined) => {
-        if (!hero) return this.reuter.navigate(['/heroes/list']);
+        if (!hero) return this.router.navigate(['/heroes/list']);
         this.hero = hero;
         return;
       });
   }
 
   goBack(): void {
-    this.reuter.navigateByUrl('heroes/list');
+    this.router.navigateByUrl('heroes/list');
   }
 }
