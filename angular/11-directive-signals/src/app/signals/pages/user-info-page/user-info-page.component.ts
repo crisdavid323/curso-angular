@@ -9,6 +9,7 @@ import { User } from '../../interfaces/user-request.interface';
 export class UserInfoPageComponent implements OnInit {
 
   private usersService = inject(UsersServiceService);
+  
   public userId = signal(1);
 
   public currentUser = signal<User|undefined>(undefined);
